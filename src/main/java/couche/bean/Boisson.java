@@ -1,9 +1,9 @@
-public class Boison {
+public class Boisson {
   
     private String name;
     private double price;
 
-    public Boison(String name, double price) {
+    public Boisson(String name, double price) {
         this.name = name;
         this.price = price;
     }
