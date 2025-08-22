@@ -63,3 +63,17 @@ un DrinkDispenserPort (simulation hardware).
 Ajouter une règle métier : "si le paiement échoue, afficher un message mais ne pas distribuer la boisson".
 
 💡 But : montrer l’indépendance du domaine → on peut brancher de nouveaux adapters sans toucher au cœur.
+
+
+
+🔍 Comparaison avec l’hexagonale
+-----------
+Architecture en couches :
+- Facile à lire pour des juniors.
+- Mais le domaine est fortement lié à la technique (DAO, controller).
+- Difficile d’ajouter un autre mode d’interaction (GUI, API REST, hardware) sans dupliquer.
+
+Architecture hexagonale :
+- Domaine indépendant, testable sans infrastructure.
+- Ports/adapters facilitent l’évolution (ajouter carte bancaire, un écran tactile, etc.).
+- Demande un peu plus de maturité et de discipline.
