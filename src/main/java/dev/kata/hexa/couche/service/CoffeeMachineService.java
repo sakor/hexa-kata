@@ -11,17 +11,19 @@ public class CoffeeMachineService {
 
     private final BoissonDAO boissonDAO;
 
-    public String orderDrink(String nomBoisson, Payment payment) {
+    public String orderDrink(String nomBoisson, Boolean sucre,Payment payment) {
         var boisson = boissonDAO.findByName(nomBoisson);
 
         if (boisson == null) {
             return "Boisson inconnue.";
         }
 
-        if (payment.getAmount() >= boisson.getPrice()) {
+        var montant = sucre ? boisson.getPrice() + 0.5 : boisson.getPrice();
+
+        if (payment.getAmount() >= montant) {
             return "Voici votre " + boisson.getName();
         } else {
-            return "Montant insuffisant (Prix : " + boisson.getPrice() + "€)";
+            return "Montant insuffisant (Prix : " + montant + "€)";
         }
     }
 }

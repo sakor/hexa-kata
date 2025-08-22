@@ -14,8 +14,8 @@ public class CoffeeMachineController {
     private final CoffeeMachineService service;
 
     @PostMapping("/commande")
-    public ResponseEntity<String> orderDrink(@RequestParam String boisson, @RequestBody Payment payment) {
-        var result = service.orderDrink(boisson, payment);
+    public ResponseEntity<String> orderDrink(@RequestParam String boisson, @RequestParam(defaultValue = "false") Boolean sucre, @RequestBody Payment payment) {
+        var result = service.orderDrink(boisson, sucre, payment);
         return ResponseEntity.ok(result);
     }
 }
