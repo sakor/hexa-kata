@@ -3,6 +3,7 @@ package dev.kata.hexa.couche;
 import dev.kata.hexa.couche.bean.Boisson;
 import dev.kata.hexa.couche.bean.Payment;
 import dev.kata.hexa.couche.dao.BoissonDAO;
+import dev.kata.hexa.couche.message.MessagerEnCouche;
 import dev.kata.hexa.couche.service.CoffeeMachineService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,13 +12,16 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class CoffeMachineServiceTest {
 
     @Mock
     private BoissonDAO boissonDAO;
+
+    @Mock
+    private MessagerEnCouche messagerEnCouche;
 
     @InjectMocks
     private CoffeeMachineService service;
@@ -34,6 +38,7 @@ class CoffeMachineServiceTest {
 
         // Then
         assertThat(result).isEqualTo("Voici votre " + nomBoisson);
+        verify(messagerEnCouche, times(1)).envoyer(nomBoisson);
     }
 
     @Test
@@ -61,6 +66,8 @@ class CoffeMachineServiceTest {
 
         // Then
         assertThat(result).isEqualTo("Boisson inconnue.");
+        verify(messagerEnCouche, times(1)).envoyer(nomBoisson);
+
     }
 
     @Test
@@ -75,6 +82,8 @@ class CoffeMachineServiceTest {
 
         // Then
         assertThat(result).isEqualTo("Montant insuffisant (Prix : 2.5€)");
+        verify(messagerEnCouche, times(1)).envoyer(nomBoisson);
+
     }
 
 
