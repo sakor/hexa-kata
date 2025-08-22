@@ -17,7 +17,7 @@ Sinon, afficher un message d’erreur.
 
 🔄 Itérations
 -----------
-#Itération 1 : Boisson simple
+# Itération 1 : Boisson simple
 Une boisson coûte 1€.
 L’utilisateur insère une pièce et choisit sa boisson.
 Si l’argent est suffisant → délivrer la boisson.
