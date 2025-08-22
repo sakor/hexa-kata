@@ -18,18 +18,28 @@ Sinon, afficher un message d’erreur.
 🔄 Itérations
 -----------
 # Itération 1 : Boisson simple
+
 Une boisson coûte 1€.
+
 L’utilisateur insère une pièce et choisit sa boisson.
+
 Si l’argent est suffisant → délivrer la boisson.
+
 Sinon → afficher "Montant insuffisant".
+
 💡 But : coder une logique métier propre, testable sans dépendre de la console, de la DB ou du hardware.
 
 # Itération 2 : Prix et options
 Ajouter plusieurs boissons avec prix différents :
+
 Expresso : 1€
+
 Cappuccino : 1.5€
+
 Thé : 1€
+
 Possibilité de choisir sucre (0.1€ de plus).
+
 💡 But : introduire une logique métier plus riche → montrer l’intérêt d’objets métier (Boisson, Option, etc.)
 
 # Itération 3 : Moyens de paiement
