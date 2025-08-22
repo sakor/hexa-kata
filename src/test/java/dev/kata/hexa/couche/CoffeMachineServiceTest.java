@@ -30,7 +30,7 @@ class CoffeMachineServiceTest {
         when(boissonDAO.findByName(nomBoisson)).thenReturn(new Boisson(nomBoisson, montant));
 
         // When
-        var result = service.orderDrink(nomBoisson, new Payment(2.0));
+        var result = service.orderDrink(nomBoisson, false ,new Payment(2.0));
 
         // Then
         assertThat(result).isEqualTo("Voici votre " + nomBoisson);
@@ -44,7 +44,7 @@ class CoffeMachineServiceTest {
         when(boissonDAO.findByName(nomBoisson)).thenReturn(new Boisson(nomBoisson, montant));
 
         // When
-        var result = service.orderDrink(nomBoisson, new Payment(1.0));
+        var result = service.orderDrink(nomBoisson, false, new Payment(1.0));
 
         // Then
         assertThat(result).isEqualTo("Montant insuffisant (Prix : " + montant + "€)");
@@ -57,10 +57,24 @@ class CoffeMachineServiceTest {
         when(boissonDAO.findByName(nomBoisson)).thenReturn(null);
 
         // When
-        var result = service.orderDrink(nomBoisson, new Payment(2.0));
+        var result = service.orderDrink(nomBoisson, false, new Payment(2.0));
 
         // Then
         assertThat(result).isEqualTo("Boisson inconnue.");
+    }
+
+    @Test
+    void orderDrink_WITH_the_with_sugar_and_2_euros_SHOULD_not_dispense_drink() {
+        // Given
+        var nomBoisson = "the";
+
+        when(boissonDAO.findByName(nomBoisson)).thenReturn(new Boisson(nomBoisson, 2.0));
+
+        // When
+        var result = service.orderDrink(nomBoisson, true, new Payment(2.0));
+
+        // Then
+        assertThat(result).isEqualTo("Montant insuffisant (Prix : 2.5€)");
     }
 
 
