@@ -19,4 +19,6 @@ public class HexagonalArchitectureTest {
     @ArchTest
     static final ArchRule hexagonal_jmolecule_rules = JMoleculesArchitectureRules.ensureHexagonal();
 
+
+
 }
