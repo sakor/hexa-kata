@@ -1,0 +1,8 @@
+###
+POST http://localhost:8080/cafe/commande?
+    boisson=expresso
+Content-Type: application/json
+
+{
+    "amount" : 2.5
+}
