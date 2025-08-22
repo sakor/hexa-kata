@@ -6,3 +6,12 @@ Content-Type: application/json
 {
     "amount" : 2.5
 }
+
+###
+POST http://localhost:8080/hexa/cafe/commande?
+    boisson=expresso
+Content-Type: application/json
+
+{
+"amount" : 2.5
+}
