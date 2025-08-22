@@ -1,6 +1,8 @@
 ☕ Coffee Machine Kata (Architecture Hexagonale)
 ======
 
+<img width="828" height="466" alt="image" src="https://github.com/user-attachments/assets/7cab05c5-fd12-440d-8555-f96a500e155e" />
+
 🎯 Objectifs pédagogiques
 -----------
 - Apprendre à séparer métier et infrastructure.
