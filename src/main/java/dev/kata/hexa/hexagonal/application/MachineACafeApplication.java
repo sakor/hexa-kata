@@ -4,10 +4,12 @@ import dev.kata.hexa.hexagonal.infrastructure.primary.rest.PaiementDTO;
 import dev.kata.hexa.hexagonal.application.port.out.BoissonPort;
 import dev.kata.hexa.hexagonal.application.port.in.MachineACafePort;
 import lombok.RequiredArgsConstructor;
+import org.jmolecules.architecture.hexagonal.Application;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
+@Application
 public class MachineACafeApplication implements MachineACafePort {
 
     private final BoissonPort boissonPort;
