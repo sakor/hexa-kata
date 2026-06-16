@@ -6,3 +6,23 @@ Content-Type: application/json
 {
   "amount" : 2.5
 }
+
+###
+POST http://localhost:8080/cafe/commande?
+    boisson=expresso&
+    sucre=true
+Content-Type: application/json
+
+{
+  "amount" : 2.5
+}
+
+### KO sucre
+POST http://localhost:8080/cafe/commande?
+    boisson=expresso&
+    sucre=true
+Content-Type: application/json
+
+{
+  "amount" : 1.4
+}

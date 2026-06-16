@@ -19,9 +19,10 @@ class CoffeeMachineControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    private ResultActions call_machine(String boisson, String montant) throws Exception {
+    private ResultActions call_machine(String boisson, String montant, Boolean sucre) throws Exception {
         return mockMvc.perform(post("/cafe/commande")
                 .param("boisson", boisson)
+                .param("sucre", sucre.toString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{ \"amount\":" + montant + " }")
         );
@@ -29,23 +30,31 @@ class CoffeeMachineControllerTest {
 
     @Test
     void commande_valide_retourne_confirmation() throws Exception {
-        call_machine("expresso", "2.0")
+        call_machine("expresso", "2.0", false)
                 .andExpect(status().isOk())
                 .andExpect(content().string("Voici votre Expresso"));
     }
 
     @Test
     void boisson_inconnue_retourne_message_erreur() throws Exception {
-        call_machine("biere", "2.0")
+        call_machine("biere", "2.0", false)
                 .andExpect(status().isOk())
                 .andExpect(content().string("Boisson inconnue."));
     }
 
     @Test
     void montant_insuffisant_retourne_message_erreur() throws Exception {
-        call_machine("cappuccino", "0.5")
+        call_machine("cappuccino", "0.5", false)
                 .andExpect(status().isOk())
                 .andExpect(content().string(org.hamcrest.Matchers.containsString("Montant insuffisant")));
     }
+
+    @Test
+    void commande_valide_montant_insuffisant_avec_sucre_retourne_message_erreur() throws Exception {
+        call_machine("expresso", "1.0", true)
+                .andExpect(status().isOk())
+                .andExpect(content().string(org.hamcrest.Matchers.containsString("Montant insuffisant (Prix : 1.5€)")));
+    }
+
 
 }
