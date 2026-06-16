@@ -26,3 +26,22 @@ Content-Type: application/json
 {
   "amount" : 1.4
 }
+
+###
+POST http://localhost:8080/hexa/cafe/commande?
+    boisson=expresso
+Content-Type: application/json
+
+{
+  "amount" : 2.5
+}
+
+### KO sucre
+POST http://localhost:8080/hexa/cafe/commande?
+    boisson=expresso&
+    sucre=true
+Content-Type: application/json
+
+{
+  "amount" : 1.4
+}
